@@ -4,6 +4,7 @@ import styled from "styled-components";
 const StyledAnchor = styled.a`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	max-width: 58rem;
 	margin: auto;
 	padding: 3rem 2rem;
@@ -27,7 +28,7 @@ const AuthorInfo = () => {
 				<p className="author-name">Lorem Ipsum</p>
 				<p className="category">Lorem Ipsum</p>
 			</div>
-			<span class="material-icons">trending_flat</span>
+			<span className="material-icons">trending_flat</span>
 		</StyledAnchor>
 	);
 };

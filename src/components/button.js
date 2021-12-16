@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -21,9 +21,16 @@ const StyledButton = styled.button`
 `;
 
 const RandomButton = () => {
+	const [quote, setQuote] = useState("");
+	const getRandomQuote = () => {
+		fetch("https://quote-garden.herokuapp.com/api/v3/quotes/random")
+			.then((resp) => resp.json())
+			.then((data) => setQuote(data.data[0].quoteText));
+	};
 	return (
-		<StyledButton>
-			random <span class="material-icons md-16">loop</span>
+		<StyledButton onClick={getRandomQuote}>
+			random <span className="material-icons md-16">loop</span>
+			<p>{quote}</p>
 		</StyledButton>
 	);
 };

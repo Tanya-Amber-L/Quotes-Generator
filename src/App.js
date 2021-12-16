@@ -10,6 +10,10 @@ const DivFlex = styled.div`
 `;
 
 const App = () => {
+	// const randomQuote = () => {
+	// 	console.log("test");
+	// };
+
 	return (
 		<div>
 			<DivFlex>
