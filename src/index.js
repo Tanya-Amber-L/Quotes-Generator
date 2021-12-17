@@ -16,7 +16,7 @@ const GlobalStyles = createGlobalStyle`
 	html {
 		font-size: 62.5%;
 	}
-	.material-icons.md-16 { font-size: 16px; }
+	.material-icons.md-16 { font-size: 16px;}
 `;
 
 ReactDOM.render(
