@@ -20,10 +20,10 @@ const StyledButton = styled.button`
 	}
 `;
 
-const RandomButton = () => {
+const RandomButton = ({ clickFunc }) => {
 	return (
-		<StyledButton>
-			random <span class="material-icons md-16">loop</span>
+		<StyledButton onClick={() => clickFunc()}>
+			random <span className="material-icons md-16">loop</span>
 		</StyledButton>
 	);
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledAnchor = styled.a`
+const StyledDiv = styled.div`
 	display: flex;
 	justify-content: space-between;
 	max-width: 58rem;
@@ -20,15 +20,15 @@ const StyledAnchor = styled.a`
 	}
 `;
 
-const AuthorInfo = () => {
+const AuthorInfo = ({ quoteAuthor, quoteGenre, clickFunc }) => {
 	return (
-		<StyledAnchor>
+		<StyledDiv onClick={() => clickFunc(quoteAuthor)}>
 			<div>
-				<p className="author-name">Lorem Ipsum</p>
-				<p className="category">Lorem Ipsum</p>
+				<p className="author-name">{quoteAuthor}</p>
+				<p className="category">{quoteGenre}</p>
 			</div>
-			<span class="material-icons">trending_flat</span>
-		</StyledAnchor>
+			<span className="material-icons">trending_flat</span>
+		</StyledDiv>
 	);
 };
 

@@ -21,6 +21,7 @@ Solution for a challenge from Devchallenges.io
 ### Built With
 
 -   [React](https://reactjs.org/)
+-   Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Features
 

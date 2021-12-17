@@ -10,16 +10,8 @@ const StyledArticle = styled.article`
 	border-right: 0.7rem solid transparent;
 `;
 
-const Quote = () => {
-	return (
-		<StyledArticle>
-			"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi,
-			perferendis iste quisquam fugit ipsam molestias officiis reiciendis
-			assumenda Possimus quo natus consequatur aspernatur beatae
-			laboriosam, vel deleniti laudantium architecto nesciunt? Illo est
-			similique ab, a quia aspernatur voluptates reiciendis."
-		</StyledArticle>
-	);
+const Quote = ({ quoteText }) => {
+	return <StyledArticle>{quoteText}</StyledArticle>;
 };
 
 export default Quote;
