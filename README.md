@@ -16,12 +16,15 @@ Solution for a challenge from Devchallenges.io
 
 ## Project
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![screenshot](./public/mockup.jpg)
 
 ### Built With
 
 -   [React](https://reactjs.org/)
 -   Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+-   [Quote Garden API](https://pprathameshmore.github.io/QuoteGarden/)
+-   [Material Design Icons](https://google.github.io/material-design-icons/)
+-   Deployed on [Netlify](https://www.netlify.com/)
 
 ### Features
 
