@@ -10,12 +10,11 @@ const Heading = styled.h1`
 `;
 
 const QuoteList = ({ list, author }) => {
-	console.log(list);
 	return (
 		<>
 			<Heading> {author}</Heading>
-			{list.map((text) => {
-				return <Quote quoteText={text} />;
+			{list.map((text, index) => {
+				return <Quote key={index} quoteText={text} />;
 			})}
 		</>
 	);

@@ -13,10 +13,28 @@ const GlobalStyles = createGlobalStyle`
 		font-family: "Raleway", sans-serif;
 		font-weight: 500;
 	}
+	body {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
 	html {
 		font-size: 62.5%;
 	}
 	.material-icons.md-16 { font-size: 16px;}
+	.owner {
+		padding: 2rem;
+		margin: 1rem auto;
+		color: #828282;
+		& a {
+			text-decoration: none;
+			color: #828282;
+		}
+		& .name {
+			font-weight: 700;
+		}
+	}
 `;
 
 ReactDOM.render(

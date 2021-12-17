@@ -27,7 +27,6 @@ const App = () => {
 	const RandomQuote = async () => {
 		setIsAuthorList(false);
 		const quote = await fetchRandomQuote();
-		console.log(quote);
 		setText(quote.quoteText);
 		setAuthor(quote.quoteAuthor);
 		setGenre(quote.quoteGenre);

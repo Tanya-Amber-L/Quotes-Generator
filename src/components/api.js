@@ -3,7 +3,6 @@ export const fetchRandomQuote = async () => {
 		"https://quote-garden.herokuapp.com/api/v3/quotes/random"
 	);
 	const resp = await request.json();
-	// console.log(resp);
 	return resp.data[0];
 };
 
