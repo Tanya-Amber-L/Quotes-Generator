@@ -1,21 +1,19 @@
 import React from "react";
-// import styled from "styled-components";
+import styled from "styled-components";
 import Quote from "./quote";
 
-// const Styled = styled.div`
+const Heading = styled.h1`
+	font-size: 2.5rem;
+	font-weight: 700;
+	max-width: 65rem;
+	margin: 2rem auto;
+`;
 
-// `;
-
-const QuoteList = ({ list }) => {
-	// list.forEach((quoteText) => {
-	// 	return (
-	// 		<div>
-	// 			<Quote quoteText={quoteText} />
-	// 		</div>
-	// 	);
-	// });
+const QuoteList = ({ list, author }) => {
+	console.log(list);
 	return (
 		<>
+			<Heading> {author}</Heading>
 			{list.map((text) => {
 				return <Quote quoteText={text} />;
 			})}

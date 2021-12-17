@@ -5,6 +5,7 @@ import RandomButton from "./components/button";
 import LoadingAnimation from "./components/loadingAnimation";
 import Quote from "./components/quote";
 import QuoteList from "./components/quotesList";
+import { fetchRandomQuote, fetchQuotesFromAuthor } from "./components/api";
 
 const DivFlex = styled.div`
 	display: flex;
@@ -16,85 +17,57 @@ const App = () => {
 	const [author, setAuthor] = useState("");
 	const [genre, setGenre] = useState("");
 	const [quoteList, setQuoteList] = useState([]);
-	const [authorList, setAuthorList] = useState(false);
+	const [isAuthorList, setIsAuthorList] = useState(false);
 
 	useEffect(() => {
-		fetchRandomQuote();
+		console.clear();
+		RandomQuote();
 	}, []);
 
-	const fetchRandomQuote = () => {
-		setAuthorList(false);
-		fetch("https://quote-garden.herokuapp.com/api/v3/quotes/random")
-			.then((resp) => resp.json())
-			.then((json) => {
-				const { quoteAuthor, quoteGenre, quoteText, _id } =
-					json.data[0];
-
-				const quote = {
-					author: quoteAuthor,
-					genre: quoteGenre,
-					text: quoteText,
-					id: _id,
-				};
-				setText(quote.text);
-				setAuthor(quote.author);
-				setGenre(quote.genre);
-				setQuoteList([]);
-			});
+	const RandomQuote = async () => {
+		setIsAuthorList(false);
+		const quote = await fetchRandomQuote();
+		console.log(quote);
+		setText(quote.quoteText);
+		setAuthor(quote.quoteAuthor);
+		setGenre(quote.quoteGenre);
+		setQuoteList([]);
 	};
 
-	const fetchQuotesFromAuthor = (author) => {
-		setAuthorList(true);
-		fetch(
-			`https://quote-garden.herokuapp.com/api/v3/quotes?author=${author}`
-		)
-			.then((resp) => resp.json())
-			.then((json) => {
-				json.data.forEach((quoteFromAuthor) => {
-					const authorQuoteText = quoteFromAuthor.quoteText;
-					quoteList.push(authorQuoteText);
-				});
-			})
-			.then(() => {
-				setQuoteList(quoteList);
-				console.log(quoteList, authorList);
-			});
+	const QuotesFromAuthor = async (author) => {
+		setIsAuthorList(true);
+		const quoteFromAuthor = await fetchQuotesFromAuthor(author);
+		setQuoteList(quoteFromAuthor);
 	};
 
 	return (
 		<div>
-			{/* {(() => {
-				if (authorList) {
-					// if it's a list of quotes from 1 author
-					// quoteList === [] ? (
-					// 	<LoadingAnimation />
-					// ) : (
-					<div>
-						<DivFlex>
-							<RandomButton clickFunc={fetchRandomQuote} />
-						</DivFlex>
-						<QuoteList />
-					</div>;
-					// );
-				} else { */}
 			{text === "" ? (
 				<LoadingAnimation />
 			) : (
-				<div>
-					<DivFlex>
-						<RandomButton clickFunc={fetchRandomQuote} />
-					</DivFlex>
-					<Quote quoteText={text} />
-					<AuthorInfo
-						quoteAuthor={author}
-						quoteGenre={genre}
-						clickFunc={fetchQuotesFromAuthor}
-					/>
-					<QuoteList list={quoteList} />
-				</div>
+				[
+					!isAuthorList ? (
+						<div>
+							<DivFlex>
+								<RandomButton clickFunc={RandomQuote} />
+							</DivFlex>
+							<Quote quoteText={text} />
+							<AuthorInfo
+								quoteAuthor={author}
+								quoteGenre={genre}
+								clickFunc={() => QuotesFromAuthor(author)}
+							/>
+						</div>
+					) : (
+						<div>
+							<DivFlex>
+								<RandomButton clickFunc={RandomQuote} />
+							</DivFlex>
+							<QuoteList list={quoteList} author={author} />
+						</div>
+					),
+				]
 			)}
-			{/* }
-			})()} */}
 		</div>
 	);
 };
